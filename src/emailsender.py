@@ -1,6 +1,4 @@
 #account setup
-username = 'homeautomationstuff986@gmail.com';
-password = 'blahblah12345!';
 server = 'smtp.gmail.com:587';
 
 #imports
@@ -31,7 +29,7 @@ def create_msg(to_address,
 # takes an smtp address, user name, password and MIME* object
 # if mode = 0 sends to and cc
 # if mode = 1 sends to bcc
-def send_email(smtp_address, usr, password, msg, mode):
+def send_email(smtp_address, username, password, msg, mode):
     server = smtplib.SMTP(smtp_address);
     server.ehlo();
     server.starttls();
@@ -56,7 +54,7 @@ def send_email(smtp_address, usr, password, msg, mode):
 #                                        0 - plain
 #                                        1 - html
 # files is list of strings
-def compose_email(addresses, subject, body, files):
+def compose_email(addresses, subject, body, files, username, password):
 
     # addresses
     to_address = addresses[0];

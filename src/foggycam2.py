@@ -342,6 +342,7 @@ class FoggyCam(object):
     """Starts the multi-threaded image capture process."""
 
     print("<> INFO: {} Capturing images ...".format(self.now_time()))
+    raise Exception()
 
     self.is_capturing = capture
 
@@ -427,9 +428,14 @@ if __name__ == '__main__':
     print("FoggyCam 1.0 - Nest video/image capture tool ended.")
 
   except Exception as global_error:
-    CAM.compileVideo(CAM, camera_name, camera, camera_buffer, video_path, file_id, camera_path, True)
     print("<> CRITICAL: unknown error \n {}".format(global_error))
+    username = CONFIG.email_username
+    password = CONFIG.email_password
+
     emailsender.compose_email(['nickmartinson986@gmail.com','',''],
       'Nest Video capture crash',
       [['The Nest Video capture script crashed\n',0]],
-      '');          
+      '',
+      username,
+      password);          
+      # CAM.compileVideo(CAM, camera_name, camera, camera_buffer, video_path, file_id, camera_path, True)
